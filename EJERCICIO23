@@ -1,0 +1,36 @@
+import java.util.Scanner;
+class MultiplicarPorOnce {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Introduzca un número entero: ");
+        String nStr = sc.next();
+        
+        StringBuilder resultado = new StringBuilder();
+        int acarreo = 0;
+
+        for (int i = nStr.length(); i >= 0; i--) {
+            int suma;
+            if (i == nStr.length()) {              
+                suma = Character.getNumericValue(nStr.charAt(i - 1));
+            } else if (i == 0) {              
+                suma = Character.getNumericValue(nStr.charAt(i)) + acarreo;
+                acarreo = 0; // Se limpia para el paso final
+            } else {                
+                int digitoActual = Character.getNumericValue(nStr.charAt(i - 1));
+                int digitoSiguiente = Character.getNumericValue(nStr.charAt(i));
+                suma = digitoActual + digitoSiguiente + acarreo;
+            }
+           resultado.insert(0, suma % 10);
+            acarreo = suma / 10;
+        }
+        if (acarreo > 0) {
+            resultado.insert(0, acarreo);
+        }
+        System.out.println("El producto por 11 es: " + resultado.toString());
+        
+        long comprobacion = Long.parseLong(nStr) * 11;
+        System.out.println("(Comprobación matemática: " + comprobacion + ")");
+        sc.close();
+    }
+}
