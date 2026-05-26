@@ -1,0 +1,32 @@
+import java.util.Scanner;
+class RomanoDel1Al20 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese un número entre 1 y 20: ");
+        int numero = scanner.nextInt();
+
+        if (numero < 1 || numero > 20) {
+            System.out.println("El número DEBE estar entre 1 y 20.");
+        } else {
+            String romano = convertirARomano(numero);
+            System.out.println("El número " + numero + " en romano es: " + romano);
+        }
+
+        scanner.close();
+    }
+    public static String convertirARomano(int num) {
+        int[] valores = {10, 9, 5, 4, 1};
+        String[] romanos = {"X", "IX", "V", "IV", "I"};
+
+        StringBuilder resultado = new StringBuilder();
+
+        for (int i = 0; i < valores.length; i++) {
+            while (num >= valores[i]) {
+                resultado.append(romanos[i]);
+                num -= valores[i];
+            }
+        }
+        return resultado.toString();
+    }
+}
