@@ -1,0 +1,31 @@
+import java.util.Scanner;
+class SUMAIMPARMULTP{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingresa un numero entero: ");
+        int numeroLimite = sc.nextInt();
+        
+        int sumaPares = 0;
+        int sumaImpares = 0;
+        int sumaMultiplos5 = 0;
+        
+        for (int i = 1; i <= numeroLimite; i++) {
+            if (i % 2 == 0) {
+                sumaPares += i;
+            } else { 
+                sumaImpares += i;
+            }
+            
+            if (i % 5 == 0) {
+                sumaMultiplos5 += i;
+            }
+        }
+        
+        System.out.println("Resultados hasta el " + numeroLimite + ":");
+        System.out.println("Suma de pares: " + sumaPares);
+        System.out.println("Suma de impares: " + sumaImpares);
+        System.out.println("Suma de multiplos de 5: " + sumaMultiplos5);
+        
+        sc.close();
+    }
+}
