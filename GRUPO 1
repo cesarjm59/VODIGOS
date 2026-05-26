@@ -1,0 +1,16 @@
+1
+class TABLAS {
+    public static void main(String[] args) {
+        // Tabla del 3
+        System.out.println("=== TABLA DEL 3 ===");
+        for (int i = 1; i <= 12; i++) {
+            System.out.println("3 x " + i + " = " + (3 * i));
+    }
+    System.out.println();
+    
+    System.out.println("=== TABLA DEL 9 ===");
+    for(int i = 1; i <= 12; i++) {
+        System.out.println(" 9 x " + i + " = " + (9 * i));
+    }
+  }
+}
