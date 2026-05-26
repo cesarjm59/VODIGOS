@@ -1,0 +1,52 @@
+Sistema de Clasificación de Presos:
+import java.util.Scanner;
+class SistemaPolicial {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        for (int j = 1; j <= 3; j++) { // Las 3 jefaturas
+            System.out.println("\n--- JEFATURA DE POLICÍA #" + j + " ---");
+            System.out.print("Número de presos a procesar: ");
+            int nPresos = sc.nextInt();
+            
+            int cuentaA = 0, cuentaB = 0, cuentaC = 0;
+            int totalPistasJefatura = 0;
+
+            for (int p = 1; p <= nPresos; p++) {
+                System.out.println("Preso #" + p + ":");
+                System.out.print("  ¿Cuántas pistas tiene en contra?: ");
+                int mPistas = sc.nextInt();
+                int puntuacionTotal = 0;
+
+                for (int k = 1; k <= mPistas; k++) {
+                    System.out.print("    Tipo de pista " + k + " (A, B o C): ");
+                    char tipo = sc.next().toUpperCase().charAt(0);
+                    
+                    if (tipo == 'A') { puntuacionTotal += 20; cuentaA++; }
+                    else if (tipo == 'B') { puntuacionTotal += 15; cuentaB++; }
+                    else if (tipo == 'C') { puntuacionTotal += 30; cuentaC++; }
+                    totalPistasJefatura++;
+                }
+                String estatus;
+                if (puntuacionTotal > 85) estatus = "Culpable";
+                else if (puntuacionTotal >= 65) estatus = "Sospechoso de alto riesgo";
+                else estatus = "Sospechoso de bajo riesgo";
+
+                System.out.println("  > Puntuación: " + puntuacionTotal + " | Estatus: " + estatus);
+            }
+            System.out.println("\nESTADÍSTICAS JEFATURA #" + j + ":");
+            System.out.println("- Total presos: " + nPresos);
+            
+            String masFrecuente = (cuentaA >= cuentaB && cuentaA >= cuentaC) ? "A" : 
+                                 (cuentaB >= cuentaC) ? "B" : "C";
+            System.out.println("- Tipo de pista más frecuente: " + masFrecuente);
+
+            if (totalPistasJefatura > 0) {
+                System.out.printf("- Porcentaje A: %.2f%%%n", (cuentaA * 100.0 / totalPistasJefatura));
+                System.out.printf("- Porcentaje B: %.2f%%%n", (cuentaB * 100.0 / totalPistasJefatura));
+                System.out.printf("- Porcentaje C: %.2f%%%n", (cuentaC * 100.0 / totalPistasJefatura));
+            }
+        }
+        sc.close();
+    }
+}
