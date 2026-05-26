@@ -1,0 +1,15 @@
+class SUMA20 {
+    public static void main(String[] args) {
+       int suma = 0; 
+       int cantidadMultiplo = 20;
+       System.out.println("LA SUMA DE LOS 20 PRIMERO MULTIPLOS DE 3");
+       
+       for(int i = 1; i <= cantidadMultiplo; i++) {
+           int multiplo = 3 * i;
+           suma += multiplo;
+           System.out.println("Multiplo " + i + ": " + multiplo);
+       }
+       System.out.println();
+       System.out.println("la suma total seria:  " + suma);
+    }
+}
