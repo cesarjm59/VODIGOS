@@ -9,10 +9,9 @@ class TablaMultiplicar {
         System.out.println("La tabla de multiplicar del " + numero + " es:");
         
         for (int i = 1; i <= 10; i++) {
+            System.out.println(numero + " x " + i + " = " + (i*numero));
             
-            System.out.printf("%d x %2d = %2d%n", numero, i, (numero * i));
         }
-        
         sc.close();
     }
 }
